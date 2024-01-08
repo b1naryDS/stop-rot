@@ -1,10 +1,17 @@
 {
   "manifest_version": 2,
-  "name": "My First Extension",
+  "name": "YouTube Video Alert",
   "version": "1.0",
-  "description": "A simple Chrome extension.",
-  "browser_action": {
-    "default_popup": "popup.html"
+  "description": "Alerts when a new YouTube video is opened",
+  "permissions": ["tabs", "*://*.youtube.com/*", "activeTab"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
   },
-  "permissions": ["activeTab"]
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ]
 }
