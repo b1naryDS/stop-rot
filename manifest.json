@@ -1,17 +1,33 @@
 {
-  "manifest_version": 2,
-  "name": "YouTube Video Alert",
-  "version": "1.0",
-  "description": "Alerts when a new YouTube video is opened",
-  "permissions": ["tabs", "*://*.youtube.com/*", "activeTab"],
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
-  "content_scripts": [
-    {
-      "matches": ["*://*.youtube.com/*"],
-      "js": ["content.js"]
+    "manifest_version": 3,
+    "name": "YouTube Alert",
+    "version": "1.0",
+    "action": {
+        "default_icon": {
+            "16": "favicon.ico"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.youtube.com/watch?*"
+            ],
+            "run_at": "document_start",
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": [
+        "activeTab",
+        "storage",
+        "tabs",
+        "notifications"
+    ],
+    "chrome_url_overrides": {
+        "newtab": "newtab.html"
     }
-  ]
 }
