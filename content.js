@@ -1,8 +1,10 @@
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  if (request.message === "new YouTube video") {
-    // Check if the message is for the current tab
-    if (sender.tab && sender.tab.id === request.tabId) {
-      alert("You've opened a new YouTube video!");
+const observer = new MutationObserver((mutationsList, observer) => {
+  for (let mutation of mutationsList) {
+    if (mutation.attributeName === 'class' && mutation.target.classList.contains('html5-main-video')) {
+      observer.disconnect();
+      chrome.runtime.sendMessage({ action: 'showAlert' });
     }
   }
 });
+
+observer.observe(document.body, { attributes: true, childList: false, subtree: false });
