@@ -3,6 +3,7 @@
     "name": "YouTube Alert",
     "version": "1.0",
     "permissions": [
+        "webRequest",
         "tabs",
         "webNavigation"
     ],
@@ -22,5 +23,9 @@
             ],
             "all_frames": false
         }
-    ]
+    ],
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_action": "popup.js"
+    }
 }
