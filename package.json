@@ -1,0 +1,15 @@
+{
+  "name": "brain-rot",
+  "version": "1.0.0",
+  "description": "stop brain rot",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.0.12"
+  }
+}
