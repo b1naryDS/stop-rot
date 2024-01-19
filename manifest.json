@@ -3,13 +3,14 @@
     "name": "YouTube Alert",
     "version": "1.0",
     "permissions": [
-        "tabs"
+        "tabs",
+        "webNavigation"
     ],
     "background": {
         "scripts": [
             "background.js"
         ],
-        "persistent": false
+        "persistent": true
     },
     "content_scripts": [
         {
