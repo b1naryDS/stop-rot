@@ -1,10 +1,6 @@
-const observer = new MutationObserver((mutationsList, observer) => {
-  for (let mutation of mutationsList) {
-    if (mutation.attributeName === 'class' && mutation.target.classList.contains('html5-main-video')) {
-      observer.disconnect();
-      chrome.runtime.sendMessage({ action: 'showAlert' });
+// content.js
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.type === 'youtube_navigated') {
+        alert('You have navigated to a new YouTube video!');
     }
-  }
 });
-
-observer.observe(document.body, { attributes: true, childList: false, subtree: false });

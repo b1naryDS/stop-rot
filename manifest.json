@@ -1,33 +1,25 @@
 {
-    "manifest_version": 3,
+    "manifest_version": 2,
     "name": "YouTube Alert",
     "version": "1.0",
-    "action": {
-        "default_icon": {
-            "16": "favicon.ico"
-        }
+    "permissions": [
+        "tabs"
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
     },
     "content_scripts": [
         {
             "matches": [
-                "https://www.youtube.com/watch?*"
+                "https://www.youtube.com/watch*"
             ],
-            "run_at": "document_start",
             "js": [
                 "content.js"
-            ]
+            ],
+            "all_frames": false
         }
-    ],
-    "background": {
-        "service_worker": "background.js"
-    },
-    "permissions": [
-        "activeTab",
-        "storage",
-        "tabs",
-        "notifications"
-    ],
-    "chrome_url_overrides": {
-        "newtab": "newtab.html"
-    }
+    ]
 }
